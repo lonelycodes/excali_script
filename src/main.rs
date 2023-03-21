@@ -17,9 +17,9 @@
  *      4. create an excalidraw json file showing the dependency graph
  *         -> not implemented yet
  **/
-mod module;
+mod jsops;
 use core::panic;
-use module::FileNode;
+use jsops::FileNode;
 use std::{collections::HashMap, path::Path};
 use walkdir::WalkDir;
 
@@ -31,9 +31,9 @@ fn main() {
 
     let dependencies = files
         .iter()
-        .map(|f| module::parse(f))
-        .map(|m| module::get_dependencies(&m))
-        .collect::<Vec<Vec<module::FileNode>>>();
+        .map(|f| jsops::parse(f))
+        .map(|m| jsops::get_dependencies(&m))
+        .collect::<Vec<Vec<jsops::FileNode>>>();
 
     files.iter().zip(dependencies.iter()).for_each(|(f, d)| {
         dependency_map.insert(f.to_string(), d.to_vec());
