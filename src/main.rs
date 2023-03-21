@@ -6,73 +6,57 @@
  *      dependency tree of all the js/jsx/ts/tsx files as .excalidraw file
  *  the algorithm should therefore do the following:
  *      1. input validation
- *      2. get paths for all js/jsx/ts/tsx file
+ *          -> works well enough for now
+ *             could use clap to make it more robust
+ *      2. get paths for all js/jsx/ts/tsx files
+ *          -> works
  *      3. for each file path get its dependencies
+ *          -> in progress
  *         NOTE: can simply use a hashmap (path -> [dependency_path]) for internal representation
  *      4. create an excalidraw json file showing the dependency graph
  **/
 mod module;
+use core::panic;
+use std::path::Path;
 use walkdir::WalkDir;
 
 fn main() {
-    foobar();
-
-    let file_name = get_file_name().expect("No file found.");
-
-    let visited = Vec::new();
-    let root = module::parse(&file_name);
-    let dependencies = module::get_dependencies(&root);
-    dbg!(dependencies.clone());
-
-    let unseen: Vec<&module::FileNode> = dependencies
+    let directory = get_directory();
+    let files = get_all_js_files(directory);
+    let deps = files
         .iter()
-        .filter(|d| visited.contains(d))
-        .collect();
+        .map(|f| module::parse(f))
+        .map(|m| module::get_dependencies(&m));
 
-    let x: Vec<&module::FileNode> = dependencies
-        .iter()
-        .filter(|d| !visited.contains(d))
-        .collect();
-    dbg!(x);
-
-    let new_deps: Vec<module::FileNode> = dependencies
-        .iter()
-        .filter(|d| !visited.contains(d))
-        .map(|d| module::parse(&d.source))
-        .map(|m| module::get_dependencies(&m))
-        .flatten()
-        .collect();
-
-    let new_dependencies = [dependencies, new_deps].concat();
-
-    //let visited = [visited, unseen].concat();
-
-    new_dependencies
-        .iter()
-        .for_each(|d| print!("{}, {}, {}", d.name, d.source, d.dependencies.len()));
+    dbg!(deps.clone().collect::<Vec<Vec<module::FileNode>>>());
 }
 
-fn foobar() {
-    for e in WalkDir::new("samples") {
-        println!("{}", e.unwrap().path().display())
-    }
-}
-
-fn get_file_name() -> Option<String> {
+fn get_directory() -> String {
     let args: Vec<String> = std::env::args().collect();
     if args.len() != 2 {
-        println!("Usage: excali_ts <file>");
-        return None;
+        panic!("Usage: excali_ts <path>");
     }
 
-    let file_name = args[1].to_owned();
-    if !file_name.ends_with(".js")
-        && !file_name.ends_with(".jsx")
-        && !file_name.ends_with(".ts")
-        && !file_name.ends_with(".tsx")
-    {
-        println!("File must be a .js, .jsx, .ts, or .tsx file");
-        return None;
+    let path = Path::new(&args[1]);
+    if !path.exists() {
+        panic!("{} does not exist!", args[1]);
     }
-    Some(file_name)
+
+    args[1].to_string()
+}
+
+fn get_all_js_files(path: String) -> Vec<String> {
+    let mut files = Vec::new();
+    for entry in WalkDir::new(path) {
+        let entry = entry.unwrap();
+        let path = entry.path();
+        if path.is_file() {
+            if let Some(ext) = path.extension() {
+                if ext == "js" || ext == "jsx" || ext == "ts" || ext == "tsx" {
+                    files.push(path.display().to_string());
+                }
+            }
+        }
+    }
+    files
 }

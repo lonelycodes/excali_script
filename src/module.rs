@@ -7,15 +7,29 @@ use swc_common::{
 };
 use swc_ecma_parser::{lexer::Lexer, Parser, StringInput, Syntax};
 
+#[derive(Debug, Clone, PartialEq)]
+pub struct FileNode {
+    pub name: String,
+    pub source: String,
+    pub dependencies: Vec<FileNode>,
+}
+
+impl FileNode {
+    fn new(name: String, source: String, dependencies: Vec<FileNode>) -> Self {
+        Self {
+            name,
+            source,
+            dependencies,
+        }
+    }
+}
 
 pub fn parse(file_name: &str) -> swc_ecma_ast::Module {
     let cm: Lrc<SourceMap> = Default::default();
     let handler = Handler::with_tty_emitter(ColorConfig::Auto, true, false, Some(cm.clone()));
     let path = Path::new(file_name);
 
-    let fm = cm
-        .load_file(path)
-        .expect("failed to load file");
+    let fm = cm.load_file(path).expect("failed to load file");
 
     let lexer = Lexer::new(
         Syntax::Es(Default::default()),
@@ -39,33 +53,15 @@ pub fn parse(file_name: &str) -> swc_ecma_ast::Module {
         .expect("failed to parser module")
 }
 
-#[derive(Debug, Clone, PartialEq)]
-pub struct FileNode {
-    pub name: String,
-    pub source: String,
-    pub dependencies: Vec<FileNode>,
-}
-
-impl FileNode {
-    fn new(name: String, source: String, dependencies: Vec<FileNode>) -> Self {
-        Self {
-            name,
-            source,
-            dependencies,
-        }
-    }
-}
-
 pub fn get_dependencies(module: &swc_ecma_ast::Module) -> Vec<FileNode> {
     module_path!();
     let mut import_statements = Vec::new();
     let mut dependencies = Vec::new();
 
     for item in &module.body {
-        if let swc_ecma_ast::ModuleItem::ModuleDecl(decl) = item {
-            if let swc_ecma_ast::ModuleDecl::Import(import) = decl {
-                import_statements.push(import.clone());
-            }
+        if let swc_ecma_ast::ModuleItem::ModuleDecl(swc_ecma_ast::ModuleDecl::Import(import)) = item
+        {
+            import_statements.push(import.clone());
         }
     }
 
@@ -75,19 +71,6 @@ pub fn get_dependencies(module: &swc_ecma_ast::Module) -> Vec<FileNode> {
         let node = FileNode::new(name, source, vec![]);
         dependencies.push(node);
     }
-    
+
     dependencies
 }
-
-// #[cfg(test)]
-// mod tests {
-//     use super::*;
-
-//     #[test]
-//     fn test_get_imports() {
-//         let module = parse(&String::from("src/test.js"));
-//         let imports = get_dependencies(&module);
-
-//         dbg!(imports);
-//     }
-// }
