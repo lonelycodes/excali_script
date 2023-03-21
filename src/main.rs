@@ -13,9 +13,22 @@
  *      3. for each file path get its dependencies
  *          -> works well enough for now
  *            could use fancier data structures to make it more robust
- *         NOTE: can simply use a hashmap (path -> [dependency_path]) for internal representation
+ *          NOTE: can simply use a hashmap (file -> [dependency]) for internal representation
  *      4. create an excalidraw json file showing the dependency graph
  *         -> not implemented yet
+ *         probably needs its own module
+ *         
+ *         create empty excalidraw file
+ *         
+ *         do something like this:
+ *         decide on a layout algorithm
+ *           -> probably needs its own module??
+ *         calculate positions for each file
+ *         for each file in the hashmap
+ *            add a box for the file
+ *            for each dependency of the file
+ *              make a line from the file to the dependency
+ *         NOTE: could use a graph library for this
  **/
 mod jsops;
 use core::panic;
