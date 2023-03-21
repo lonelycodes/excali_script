@@ -40,6 +40,12 @@ fn main() {
     let directory = get_directory();
     let files = get_all_js_files(directory);
 
+    let dependency_map = build_dependency_map(files);
+
+    dbg!(dependency_map);
+}
+
+fn build_dependency_map(files: Vec<String>) -> HashMap<String, Vec<FileNode>> {
     let mut dependency_map: HashMap<String, Vec<FileNode>> = HashMap::new();
 
     let dependencies = files
@@ -51,8 +57,7 @@ fn main() {
     files.iter().zip(dependencies.iter()).for_each(|(f, d)| {
         dependency_map.insert(f.to_string(), d.to_vec());
     });
-
-    dbg!(dependency_map);
+    dependency_map
 }
 
 fn get_directory() -> String {
