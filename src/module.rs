@@ -48,7 +48,7 @@ pub fn parse(file_name: &str) -> swc_ecma_ast::Module {
             // Unrecoverable fatal error occurred
             e.into_diagnostic(&handler).emit()
         })
-        .expect("failed to parser module")
+        .expect("failed to parse module")
 }
 
 pub fn get_dependencies(module: &swc_ecma_ast::Module) -> Vec<FileNode> {
