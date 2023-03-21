@@ -25,19 +25,17 @@ pub fn parse(file_name: &str) -> swc_ecma_ast::Module {
     let path = Path::new(file_name);
 
     let fm = cm.load_file(path).expect("failed to load file");
-
     let lexer = Lexer::new(
         Syntax::Es(Default::default()),
         Default::default(),
         StringInput::from(&*fm),
         None,
     );
-
     let mut parser = Parser::new_from(lexer);
 
-    for e in parser.take_errors() {
+    parser.take_errors().into_iter().for_each(|e| {
         e.into_diagnostic(&handler).emit();
-    }
+    });
 
     parser
         .parse_module()
@@ -53,19 +51,26 @@ pub fn get_dependencies(module: &swc_ecma_ast::Module) -> Vec<FileNode> {
     let mut import_statements = Vec::new();
     let mut dependencies = Vec::new();
 
-    for item in &module.body {
+    module.body.iter().for_each(|item| {
         if let swc_ecma_ast::ModuleItem::ModuleDecl(swc_ecma_ast::ModuleDecl::Import(import)) = item
         {
             import_statements.push(import.clone());
         }
-    }
+    });
 
-    for import in import_statements {
-        let source = import.src.value.to_string();
-        let name = source.split('/').last().unwrap().to_string();
-        let node = FileNode::new(name, source);
-        dependencies.push(node);
-    }
+    import_statements.into_iter().for_each(|import| {
+        dependencies.push(FileNode::new(
+            import
+                .src
+                .value
+                .to_string()
+                .split('/')
+                .last()
+                .unwrap()
+                .to_string(),
+            import.src.value.to_string(),
+        ));
+    });
 
     dependencies
 }

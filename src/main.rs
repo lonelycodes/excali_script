@@ -58,7 +58,7 @@ fn get_directory() -> String {
 
 fn get_all_js_files(path: String) -> Vec<String> {
     let mut files = Vec::new();
-    for entry in WalkDir::new(path) {
+    WalkDir::new(path).into_iter().for_each(|entry| {
         let entry = entry.unwrap();
         let path = entry.path();
         if path.is_file() {
@@ -68,6 +68,6 @@ fn get_all_js_files(path: String) -> Vec<String> {
                 }
             }
         }
-    }
+    });
     files
 }
