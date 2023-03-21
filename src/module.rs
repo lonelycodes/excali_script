@@ -15,10 +15,7 @@ pub struct FileNode {
 
 impl FileNode {
     fn new(name: String, source: String) -> Self {
-        Self {
-            name,
-            source,
-        }
+        Self { name, source }
     }
 }
 

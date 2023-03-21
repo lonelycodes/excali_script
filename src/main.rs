@@ -19,17 +19,15 @@
  **/
 mod module;
 use core::panic;
-use std::{path::Path, collections::HashMap};
 use module::FileNode;
+use std::{collections::HashMap, path::Path};
 use walkdir::WalkDir;
 
 fn main() {
-
     let directory = get_directory();
     let files = get_all_js_files(directory);
 
     let mut dependency_map: HashMap<String, Vec<FileNode>> = HashMap::new();
-
 
     let dependencies = files
         .iter()
@@ -37,11 +35,9 @@ fn main() {
         .map(|m| module::get_dependencies(&m))
         .collect::<Vec<Vec<module::FileNode>>>();
 
-    files.iter()
-        .zip(dependencies.iter())
-        .for_each(|(f, d)| {
-            dependency_map.insert(f.to_string(), d.to_vec());
-        });
+    files.iter().zip(dependencies.iter()).for_each(|(f, d)| {
+        dependency_map.insert(f.to_string(), d.to_vec());
+    });
 
     dbg!(dependency_map);
 }
