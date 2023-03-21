@@ -7,19 +7,17 @@ use swc_common::{
 };
 use swc_ecma_parser::{lexer::Lexer, Parser, StringInput, Syntax};
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct FileNode {
     pub name: String,
     pub source: String,
-    pub dependencies: Vec<FileNode>,
 }
 
 impl FileNode {
-    fn new(name: String, source: String, dependencies: Vec<FileNode>) -> Self {
+    fn new(name: String, source: String) -> Self {
         Self {
             name,
             source,
-            dependencies,
         }
     }
 }
@@ -68,7 +66,7 @@ pub fn get_dependencies(module: &swc_ecma_ast::Module) -> Vec<FileNode> {
     for import in import_statements {
         let source = import.src.value.to_string();
         let name = source.split('/').last().unwrap().to_string();
-        let node = FileNode::new(name, source, vec![]);
+        let node = FileNode::new(name, source);
         dependencies.push(node);
     }
 

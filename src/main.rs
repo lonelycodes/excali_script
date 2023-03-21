@@ -11,24 +11,39 @@
  *      2. get paths for all js/jsx/ts/tsx files
  *          -> works
  *      3. for each file path get its dependencies
- *          -> in progress
+ *          -> works well enough for now
+ *            could use fancier data structures to make it more robust
  *         NOTE: can simply use a hashmap (path -> [dependency_path]) for internal representation
  *      4. create an excalidraw json file showing the dependency graph
+ *         -> not implemented yet
  **/
 mod module;
 use core::panic;
-use std::path::Path;
+use std::{path::Path, collections::HashMap};
+use module::FileNode;
 use walkdir::WalkDir;
 
 fn main() {
+
     let directory = get_directory();
     let files = get_all_js_files(directory);
-    let deps = files
+
+    let mut dependency_map: HashMap<String, Vec<FileNode>> = HashMap::new();
+
+
+    let dependencies = files
         .iter()
         .map(|f| module::parse(f))
-        .map(|m| module::get_dependencies(&m));
+        .map(|m| module::get_dependencies(&m))
+        .collect::<Vec<Vec<module::FileNode>>>();
 
-    dbg!(deps.clone().collect::<Vec<Vec<module::FileNode>>>());
+    files.iter()
+        .zip(dependencies.iter())
+        .for_each(|(f, d)| {
+            dependency_map.insert(f.to_string(), d.to_vec());
+        });
+
+    dbg!(dependency_map);
 }
 
 fn get_directory() -> String {
