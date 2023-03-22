@@ -13,8 +13,15 @@ mod excalidraw;
  *          -> works
  *      3. for each file path get its dependencies
  *          -> works well enough for now
- *            could use fancier data structures to make it more robust
+ *             could use fancier data structures to make it more robust
  *          NOTE: can simply use a hashmap (file -> [dependency]) for internal representation
+ *      3.5. create an excalidraw drawing module
+ *         -> in progress
+ *         [*] create texts
+ *         [] create arrow between texts
+ *         [] create multi-point arrow between texts
+ *         [*] save to file
+ *         [] (optional) create a box around the texts
  *      4. create an excalidraw json file showing the dependency graph
  *         -> not implemented yet
  *         probably needs its own module
@@ -34,7 +41,7 @@ mod excalidraw;
 mod jsops;
 
 use core::panic;
-use excalidraw::ExcalidrawDocument;
+use excalidraw::{ExcalidrawDocument, ExcalidrawElement};
 use jsops::FileNode;
 use std::{collections::HashMap, path::Path};
 use walkdir::WalkDir;
@@ -52,9 +59,14 @@ fn main() {
 }
 
 fn tmp_excalidraw_playground() {
-    let excalidraw_document = ExcalidrawDocument::new();
+    let mut document = ExcalidrawDocument::new();
 
-    excalidraw_document.save("test.excalidraw");
+    let element = ExcalidrawElement::new_text("foo.js", 0.0, 0.0);
+    let element_2 = ExcalidrawElement::new_text("bar.js", 0.0, 40.0);
+    document.add_element(element);
+    document.add_element(element_2);
+
+    document.save("test.excalidraw");
 }
 
 fn build_dependency_map(files: Vec<String>) -> HashMap<String, Vec<FileNode>> {

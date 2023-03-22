@@ -5,14 +5,12 @@ use std::{
     io::{BufWriter, Write},
 };
 
-use uuid::Uuid;
-
 pub struct ExcalidrawDocument {
     pub r#type: String,
     pub version: String,
     pub source: String,
     pub elements: Vec<ExcalidrawElement>,
-    pub appState: ExcalidrawAppState,
+    pub app_state: ExcalidrawAppState,
 }
 
 impl ExcalidrawDocument {
@@ -22,8 +20,12 @@ impl ExcalidrawDocument {
             version: "2.0.0".to_string(),
             source: "https://excalidraw.com".to_string(),
             elements: Vec::new(),
-            appState: ExcalidrawAppState::new(),
+            app_state: ExcalidrawAppState::new(),
         }
+    }
+
+    pub fn add_element(&mut self, element: ExcalidrawElement) {
+        self.elements.push(element);
     }
 
     pub fn to_json(&self) -> String {
@@ -43,7 +45,7 @@ impl ExcalidrawDocument {
                 .map(|e| e.to_json())
                 .collect::<Vec<String>>()
                 .join(","),
-            self.appState.to_json()
+            self.app_state.to_json()
         )
     }
 
@@ -54,14 +56,15 @@ impl ExcalidrawDocument {
     }
 }
 
+#[derive(Default)]
 pub struct ExcalidrawAppState {
-    pub viewBackgroundColor: String,
+    pub view_background_color: String,
 }
 
 impl ExcalidrawAppState {
     pub fn new() -> Self {
         Self {
-            viewBackgroundColor: "#ffffff".to_string(),
+            view_background_color: "#ffffff".to_string(),
         }
     }
 
@@ -70,11 +73,11 @@ impl ExcalidrawAppState {
             r#"{{
             "viewBackgroundColor": "{}"
         }}"#,
-            self.viewBackgroundColor
+            self.view_background_color
         )
     }
 }
-
+#[derive(Default)]
 pub struct ExcalidrawElement {
     pub id: String,
     pub r#type: String,
@@ -83,12 +86,11 @@ pub struct ExcalidrawElement {
     pub width: f64,
     pub height: f64,
     pub text: String,
-    pub boundElements: Vec<ExcalidrawBoundElement>,
+    pub bound_elements: Vec<ExcalidrawBoundElement>,
     pub points: Vec<ExcalidrawPoint>,
-    pub startBinding: ExcalidrawBinding,
-    pub endBinding: ExcalidrawBinding,
+    pub start_binding: ExcalidrawBinding,
+    pub end_binding: ExcalidrawBinding,
 }
-
 impl ExcalidrawElement {
     pub fn new() -> Self {
         Self {
@@ -99,10 +101,26 @@ impl ExcalidrawElement {
             width: 0.0,
             height: 0.0,
             text: "".to_string(),
-            boundElements: Vec::new(),
+            bound_elements: Vec::new(),
             points: Vec::new(),
-            startBinding: ExcalidrawBinding::new(),
-            endBinding: ExcalidrawBinding::new(),
+            start_binding: ExcalidrawBinding::new(),
+            end_binding: ExcalidrawBinding::new(),
+        }
+    }
+
+    pub fn new_text(text: &str, x: f64, y: f64) -> Self {
+        Self {
+            id: uuid::Uuid::new_v4().to_string(),
+            r#type: "text".to_string(),
+            x,
+            y,
+            width: 2.0,
+            height: 1.0,
+            text: text.to_string(),
+            bound_elements: Vec::new(),
+            points: Vec::new(),
+            start_binding: ExcalidrawBinding::new(),
+            end_binding: ExcalidrawBinding::new(),
         }
     }
 
@@ -119,7 +137,9 @@ impl ExcalidrawElement {
             "boundElements": [{}],
             "points": [{}],
             "startBinding": {},
-            "endBinding": {}
+            "endBinding": {},
+            "fontFamily": 3,
+            "fontSize": 20
         }}"#,
             self.id,
             self.r#type,
@@ -128,7 +148,7 @@ impl ExcalidrawElement {
             self.width,
             self.height,
             self.text,
-            self.boundElements
+            self.bound_elements
                 .iter()
                 .map(|e| e.to_json())
                 .collect::<Vec<String>>()
@@ -138,12 +158,13 @@ impl ExcalidrawElement {
                 .map(|p| p.to_json())
                 .collect::<Vec<String>>()
                 .join(","),
-            self.startBinding.to_json(),
-            self.endBinding.to_json()
+            self.start_binding.to_json(),
+            self.end_binding.to_json()
         )
     }
 }
 
+#[derive(Default)]
 pub struct ExcalidrawPoint {
     pub x: f64,
     pub y: f64,
@@ -189,8 +210,9 @@ impl ExcalidrawBoundElement {
     }
 }
 
+#[derive(Default)]
 pub struct ExcalidrawBinding {
-    pub elementId: String,
+    pub element_id: String,
     pub focus: f64,
     pub gap: f64,
 }
@@ -198,7 +220,7 @@ pub struct ExcalidrawBinding {
 impl ExcalidrawBinding {
     pub fn new() -> Self {
         Self {
-            elementId: "".to_string(),
+            element_id: "".to_string(),
             focus: 0.0,
             gap: 0.0,
         }
@@ -211,7 +233,7 @@ impl ExcalidrawBinding {
             "focus": {},
             "gap": {}
         }}"#,
-            self.elementId, self.focus, self.gap
+            self.element_id, self.focus, self.gap
         )
     }
 }
