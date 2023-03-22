@@ -1,3 +1,4 @@
+mod excalidraw;
 /**
  * TODO
  * current plan is to run like this:
@@ -31,7 +32,9 @@
  *         NOTE: could use a graph library for this
  **/
 mod jsops;
+
 use core::panic;
+use excalidraw::ExcalidrawDocument;
 use jsops::FileNode;
 use std::{collections::HashMap, path::Path};
 use walkdir::WalkDir;
@@ -43,6 +46,15 @@ fn main() {
     let dependency_map = build_dependency_map(files);
 
     dbg!(dependency_map);
+
+
+    tmp_excalidraw_playground();
+}
+
+fn tmp_excalidraw_playground() {
+    let excalidraw_document = ExcalidrawDocument::new();
+
+    excalidraw_document.save("test.excalidraw");
 }
 
 fn build_dependency_map(files: Vec<String>) -> HashMap<String, Vec<FileNode>> {
