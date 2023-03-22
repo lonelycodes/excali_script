@@ -92,22 +92,6 @@ pub struct ExcalidrawElement {
     pub end_binding: ExcalidrawBinding,
 }
 impl ExcalidrawElement {
-    pub fn new() -> Self {
-        Self {
-            id: uuid::Uuid::new_v4().to_string(),
-            r#type: "rectangle".to_string(),
-            x: 0.0,
-            y: 0.0,
-            width: 0.0,
-            height: 0.0,
-            text: "".to_string(),
-            bound_elements: Vec::new(),
-            points: Vec::new(),
-            start_binding: ExcalidrawBinding::new(),
-            end_binding: ExcalidrawBinding::new(),
-        }
-    }
-
     pub fn new_text(text: &str, x: f64, y: f64) -> Self {
         Self {
             id: uuid::Uuid::new_v4().to_string(),
@@ -171,8 +155,8 @@ pub struct ExcalidrawPoint {
 }
 
 impl ExcalidrawPoint {
-    pub fn new() -> Self {
-        Self { x: 0.0, y: 0.0 }
+    pub fn new(x: f64, y: f64) -> Self {
+        Self { x, y }
     }
 
     pub fn to_json(&self) -> String {
