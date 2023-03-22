@@ -1,43 +1,5 @@
 mod excalidraw;
-/**
- * TODO
- * current plan is to run like this:
- *      cargo run [path]
- *  and as output get something like this:
- *      dependency tree of all the js/jsx/ts/tsx files as .excalidraw file
- *  the algorithm should therefore do the following:
- *      1. input validation
- *          -> works well enough for now
- *             could use clap to make it more robust
- *      2. get paths for all js/jsx/ts/tsx files
- *          -> works
- *      3. for each file path get its dependencies
- *          -> works well enough for now
- *             could use fancier data structures to make it more robust
- *          NOTE: can simply use a hashmap (file -> [dependency]) for internal representation
- *      3.5. create an excalidraw drawing module
- *         -> in progress
- *         [*] create texts
- *         [] create arrow between texts
- *         [] create multi-point arrow between texts
- *         [*] save to file
- *         [] (optional) create a box around the texts
- *      4. create an excalidraw json file showing the dependency graph
- *         -> not implemented yet
- *         probably needs its own module
- *         
- *         create empty excalidraw file
- *         
- *         do something like this:
- *         decide on a layout algorithm
- *           -> probably needs its own module??
- *         calculate positions for each file
- *         for each file in the hashmap
- *            add a box for the file
- *            for each dependency of the file
- *              make a line from the file to the dependency
- *         NOTE: could use a graph library for this
- **/
+
 mod jsops;
 
 use core::panic;
