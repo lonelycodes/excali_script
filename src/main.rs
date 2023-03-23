@@ -1,5 +1,4 @@
 mod excalidraw;
-
 mod jsops;
 
 use core::panic;
@@ -14,18 +13,23 @@ fn main() {
 
     let dependency_map = build_dependency_map(files);
 
-    dbg!(dependency_map);
+    // dbg!(dependency_map.clone());
 
-    tmp_excalidraw_playground();
+    tmp_excalidraw_playground(dependency_map);
 }
 
-fn tmp_excalidraw_playground() {
+fn tmp_excalidraw_playground(dependency_map: HashMap<String, Vec<FileNode>>) {
     let mut document = ExcalidrawDocument::new();
 
-    let element = ExcalidrawElement::new_text("foo.js", 0.0, 0.0);
-    let element_2 = ExcalidrawElement::new_text("bar.js", 0.0, 40.0);
-    document.add_element(element);
-    document.add_element(element_2);
+    let mut y_value = 0.0;
+    let y_increment = 40.0;
+
+    dependency_map.iter().for_each(|(k, _v)| {
+        let mut element = ExcalidrawElement::new_text(k, 0.0, y_value);
+        y_value += y_increment;
+        element.text = k.to_string();
+        document.add_element(element);
+    });
 
     document.save("test.excalidraw");
 }
