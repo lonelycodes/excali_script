@@ -22,7 +22,7 @@ fn tmp_excalidraw_playground(dependency_map: HashMap<String, Vec<FileNode>>) {
     let mut document = ExcalidrawDocument::new();
 
     let mut y_value = 0.0;
-    let y_increment = 40.0;
+    let y_increment = 50.0;
 
     dependency_map.iter().for_each(|(k, _v)| {
         let mut element = ExcalidrawElement::new_text(k, 0.0, y_value);
