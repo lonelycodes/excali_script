@@ -98,11 +98,33 @@ impl ExcalidrawElement {
             r#type: "text".to_string(),
             x,
             y,
-            width: 2.0,
+            width: 1.0,
             height: 1.0,
             text: text.to_string(),
             bound_elements: Vec::new(),
             points: Vec::new(),
+            start_binding: ExcalidrawBinding::new(),
+            end_binding: ExcalidrawBinding::new(),
+        }
+    }
+
+    pub fn new_arrow(
+        points: Vec<ExcalidrawPoint>,
+        x: f64,
+        y: f64,
+        // start_element: ExcalidrawBoundElement,
+        // end_element: ExcalidrawBoundElement,
+    ) -> Self {
+        Self {
+            id: uuid::Uuid::new_v4().to_string(),
+            r#type: "arrow".to_string(),
+            x,
+            y,
+            width: 2.0,
+            height: 2.0,
+            text: "".to_string(),
+            bound_elements: vec![],
+            points,
             start_binding: ExcalidrawBinding::new(),
             end_binding: ExcalidrawBinding::new(),
         }
@@ -161,10 +183,10 @@ impl ExcalidrawPoint {
 
     pub fn to_json(&self) -> String {
         format!(
-            r#"{{
-            "x": {},
-            "y": {}
-        }}"#,
+            r#"[
+            {},
+            {}
+        ]"#,
             self.x, self.y
         )
     }
@@ -176,12 +198,13 @@ pub struct ExcalidrawBoundElement {
 }
 
 impl ExcalidrawBoundElement {
-    pub fn new() -> Self {
-        Self {
-            id: "".to_string(),
-            r#type: "".to_string(),
-        }
-    }
+    // TODO - uncomment when we need to create a new bound element 
+    // pub fn new() -> Self {
+    //     Self {
+    //         id: "".to_string(),
+    //         r#type: "".to_string(),
+    //     }
+    // }
 
     pub fn to_json(&self) -> String {
         format!(

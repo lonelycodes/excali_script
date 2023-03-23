@@ -2,7 +2,7 @@ mod excalidraw;
 mod jsops;
 
 use core::panic;
-use excalidraw::{ExcalidrawDocument, ExcalidrawElement};
+use excalidraw::{ExcalidrawDocument, ExcalidrawElement, ExcalidrawPoint};
 use jsops::FileNode;
 use std::{collections::HashMap, path::Path};
 use walkdir::WalkDir;
@@ -24,6 +24,9 @@ fn tmp_excalidraw_playground(dependency_map: HashMap<String, Vec<FileNode>>) {
     let mut y_value = 0.0;
     let y_increment = 50.0;
 
+    let arrow_x_offset = -10.0;
+    let arrow_y_offset = 10.0;
+
     dependency_map.iter().for_each(|(k, _v)| {
         let mut element = ExcalidrawElement::new_text(k, 0.0, y_value);
         y_value += y_increment;
@@ -31,7 +34,19 @@ fn tmp_excalidraw_playground(dependency_map: HashMap<String, Vec<FileNode>>) {
         document.add_element(element);
     });
 
-    document.save("test.excalidraw");
+    let multi_point_arrow = ExcalidrawElement::new_arrow(
+        vec![
+            ExcalidrawPoint::new(0.0, 0.0),
+            ExcalidrawPoint::new(-50.0, 0.0),
+            ExcalidrawPoint::new(-50.0, 50.0),
+            ExcalidrawPoint::new(0.0, 50.0),
+        ],
+        arrow_x_offset,
+        arrow_y_offset,
+    );
+    document.add_element(multi_point_arrow);
+
+    document.save("out.excalidraw");
 }
 
 fn build_dependency_map(files: Vec<String>) -> HashMap<String, Vec<FileNode>> {
