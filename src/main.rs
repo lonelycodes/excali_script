@@ -4,7 +4,7 @@ mod jsops;
 use core::panic;
 use excalidraw::{ExcalidrawDocument, ExcalidrawElement, ExcalidrawPoint};
 use jsops::FileNode;
-use std::{collections::HashMap, path::Path};
+use std::{collections::BTreeMap, path::Path};
 use walkdir::WalkDir;
 
 fn main() {
@@ -13,44 +13,64 @@ fn main() {
 
     let dependency_map = build_dependency_map(files);
 
-    // dbg!(dependency_map.clone());
+    dbg!(dependency_map.clone());
 
     tmp_excalidraw_playground(dependency_map);
 }
 
-fn tmp_excalidraw_playground(dependency_map: HashMap<String, Vec<FileNode>>) {
+fn tmp_excalidraw_playground(dependency_map: BTreeMap<String, Vec<FileNode>>) {
     let mut document = ExcalidrawDocument::new();
 
     let mut y_value = 0.0;
     let y_increment = 50.0;
 
-    let arrow_x_offset = -10.0;
+    // let arrow_x_offset = -10.0;
     let arrow_y_offset = 10.0;
 
-    dependency_map.iter().for_each(|(k, _v)| {
-        let mut element = ExcalidrawElement::new_text(k, 0.0, y_value);
+    dependency_map.iter().for_each(|(k, _)| {
+        let element = ExcalidrawElement::new_text(k, 0.0, y_value, k);
         y_value += y_increment;
-        element.text = k.to_string();
         document.add_element(element);
     });
 
-    let multi_point_arrow = ExcalidrawElement::new_arrow(
-        vec![
-            ExcalidrawPoint::new(0.0, 0.0),
-            ExcalidrawPoint::new(-50.0, 0.0),
-            ExcalidrawPoint::new(-50.0, 50.0),
-            ExcalidrawPoint::new(0.0, 50.0),
-        ],
-        arrow_x_offset,
-        arrow_y_offset,
-    );
-    document.add_element(multi_point_arrow);
+    // add arrow from file to dependency
+    y_value = -0.0;
+
+    dependency_map.iter().for_each(|(_k, v)| {
+        // let mut x_value = 0.0;
+        // let x_increment = 50.0;
+
+        v.iter().for_each(|_d| {
+            let arrow = build_dependency_arrow(
+                0.0, // x_value + arrow_x_offset,
+                y_value + arrow_y_offset,
+                50.0,
+            );
+            document.add_element(arrow);
+            // x_value += x_increment;
+        });
+
+        y_value += y_increment;
+    });
 
     document.save("out.excalidraw");
 }
 
-fn build_dependency_map(files: Vec<String>) -> HashMap<String, Vec<FileNode>> {
-    let mut dependency_map: HashMap<String, Vec<FileNode>> = HashMap::new();
+fn build_dependency_arrow(x: f64, y: f64, length: f64) -> ExcalidrawElement {
+    ExcalidrawElement::new_arrow(
+        vec![
+            ExcalidrawPoint::new(0.0, 0.0),
+            ExcalidrawPoint::new(-50.0, 0.0),
+            ExcalidrawPoint::new(-50.0, length),
+            ExcalidrawPoint::new(0.0, length),
+        ],
+        x,
+        y,
+    )
+}
+
+fn build_dependency_map(files: Vec<String>) -> BTreeMap<String, Vec<FileNode>> {
+    let mut dependency_map: BTreeMap<String, Vec<FileNode>> = BTreeMap::new();
 
     let dependencies = files
         .iter()

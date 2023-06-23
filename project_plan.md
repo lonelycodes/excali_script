@@ -29,8 +29,8 @@ the algorithm should do the following:
 -> in progress
 
 - [x] create texts
-- [ ] create arrow between texts
-- [ ] create multi-point arrow between texts
+- [x] create arrow between texts
+- [x] create multi-point arrow between texts
 - [x] save to file
 - [ ] (optional) create a box around the texts
 
@@ -44,3 +44,6 @@ not implemented yet. do something like this:
   - add a box for the file
   - for each dependency of the file \* make a line from the file to the dependency
     NOTE: could use a graph library for this??
+
+this one is a bit tricky  
+might have to represent as DAG and then use sth like https://graphviz.org/

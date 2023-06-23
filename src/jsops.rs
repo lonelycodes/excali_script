@@ -10,7 +10,7 @@ use swc_ecma_parser::{lexer::Lexer, Parser, StringInput, Syntax};
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct FileNode {
     pub name: String,
-    pub source: String,
+    pub source: String, // TODO C -- get the full path
 }
 
 impl FileNode {
@@ -57,6 +57,12 @@ pub fn get_dependencies(module: &swc_ecma_ast::Module) -> Vec<FileNode> {
             import_statements.push(import.clone());
         }
     });
+
+
+    import_statements.clone().into_iter().for_each(|import| {
+        dbg!(import.src);
+    });
+
 
     import_statements.into_iter().for_each(|import| {
         dependencies.push(FileNode::new(

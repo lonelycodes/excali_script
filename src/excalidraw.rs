@@ -92,9 +92,9 @@ pub struct ExcalidrawElement {
     pub end_binding: ExcalidrawBinding,
 }
 impl ExcalidrawElement {
-    pub fn new_text(text: &str, x: f64, y: f64) -> Self {
+    pub fn new_text(text: &str, x: f64, y: f64, id: &str) -> Self {
         Self {
-            id: uuid::Uuid::new_v4().to_string(),
+            id: id.to_string(),
             r#type: "text".to_string(),
             x,
             y,
@@ -198,7 +198,7 @@ pub struct ExcalidrawBoundElement {
 }
 
 impl ExcalidrawBoundElement {
-    // TODO - uncomment when we need to create a new bound element 
+    // TODO - uncomment when we need to create a new bound element
     // pub fn new() -> Self {
     //     Self {
     //         id: "".to_string(),
