@@ -9,16 +9,15 @@ use walkdir::WalkDir;
 
 fn main() {
     let directory = get_directory();
-    let files = get_all_js_files(directory);
+    let files = get_all_js_files(directory.clone());
 
-    let dependency_map = build_dependency_map(files);
-
-    dbg!(dependency_map.clone());
+    let dependency_map = build_dependency_map(directory.as_str(), files);
 
     tmp_excalidraw_playground(dependency_map);
 }
 
 fn tmp_excalidraw_playground(dependency_map: BTreeMap<String, Vec<FileNode>>) {
+    dbg!(dependency_map.clone());
     let mut document = ExcalidrawDocument::new();
 
     let mut y_value = 0.0;
@@ -69,13 +68,13 @@ fn build_dependency_arrow(x: f64, y: f64, length: f64) -> ExcalidrawElement {
     )
 }
 
-fn build_dependency_map(files: Vec<String>) -> BTreeMap<String, Vec<FileNode>> {
+fn build_dependency_map(dir: &str, files: Vec<String>) -> BTreeMap<String, Vec<FileNode>> {
     let mut dependency_map: BTreeMap<String, Vec<FileNode>> = BTreeMap::new();
 
     let dependencies = files
         .iter()
         .map(|f| jsops::parse(f))
-        .map(|m| jsops::get_dependencies(&m))
+        .map(|m| jsops::get_dependencies(dir, &m))
         .collect::<Vec<Vec<jsops::FileNode>>>();
 
     files.iter().zip(dependencies.iter()).for_each(|(f, d)| {
@@ -94,19 +93,18 @@ fn get_directory() -> String {
     if !path.exists() {
         panic!("{} does not exist!", args[1]);
     }
-
-    args[1].to_string()
+    path.canonicalize().unwrap().display().to_string()
 }
 
 fn get_all_js_files(path: String) -> Vec<String> {
     let mut files = Vec::new();
     WalkDir::new(path).into_iter().for_each(|entry| {
         let entry = entry.unwrap();
-        let path = entry.path();
-        if path.is_file() {
-            if let Some(ext) = path.extension() {
+        let current_path = entry.path().canonicalize().unwrap();
+        if current_path.is_file() {
+            if let Some(ext) = current_path.extension() {
                 if ext == "js" || ext == "jsx" || ext == "ts" || ext == "tsx" {
-                    files.push(path.display().to_string());
+                    files.push(current_path.canonicalize().unwrap().display().to_string());
                 }
             }
         }

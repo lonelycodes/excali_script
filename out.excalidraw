@@ -1,0 +1,221 @@
+{
+            "type": "excalidraw",
+            "version": "2.0.0",
+            "source": "https://excalidraw.com",
+            "elements": [{
+            "id": "/Users/watabo/Projects/excali_ts/samples/bar.js",
+            "type": "text",
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1,
+            "text": "/Users/watabo/Projects/excali_ts/samples/bar.js",
+            "boundElements": [],
+            "points": [],
+            "startBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "endBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "fontFamily": 3,
+            "fontSize": 20
+        },{
+            "id": "/Users/watabo/Projects/excali_ts/samples/baz.js",
+            "type": "text",
+            "x": 0,
+            "y": 50,
+            "width": 1,
+            "height": 1,
+            "text": "/Users/watabo/Projects/excali_ts/samples/baz.js",
+            "boundElements": [],
+            "points": [],
+            "startBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "endBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "fontFamily": 3,
+            "fontSize": 20
+        },{
+            "id": "/Users/watabo/Projects/excali_ts/samples/dir/indir.js",
+            "type": "text",
+            "x": 0,
+            "y": 100,
+            "width": 1,
+            "height": 1,
+            "text": "/Users/watabo/Projects/excali_ts/samples/dir/indir.js",
+            "boundElements": [],
+            "points": [],
+            "startBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "endBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "fontFamily": 3,
+            "fontSize": 20
+        },{
+            "id": "/Users/watabo/Projects/excali_ts/samples/foo.js",
+            "type": "text",
+            "x": 0,
+            "y": 150,
+            "width": 1,
+            "height": 1,
+            "text": "/Users/watabo/Projects/excali_ts/samples/foo.js",
+            "boundElements": [],
+            "points": [],
+            "startBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "endBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "fontFamily": 3,
+            "fontSize": 20
+        },{
+            "id": "/Users/watabo/Projects/excali_ts/samples/root.js",
+            "type": "text",
+            "x": 0,
+            "y": 200,
+            "width": 1,
+            "height": 1,
+            "text": "/Users/watabo/Projects/excali_ts/samples/root.js",
+            "boundElements": [],
+            "points": [],
+            "startBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "endBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "fontFamily": 3,
+            "fontSize": 20
+        },{
+            "id": "0c94a9d5-3e88-4c60-b71d-17c517e2c7a4",
+            "type": "arrow",
+            "x": 0,
+            "y": 10,
+            "width": 2,
+            "height": 2,
+            "text": "",
+            "boundElements": [],
+            "points": [[
+            0,
+            0
+        ],[
+            -50,
+            0
+        ],[
+            -50,
+            50
+        ],[
+            0,
+            50
+        ]],
+            "startBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "endBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "fontFamily": 3,
+            "fontSize": 20
+        },{
+            "id": "26ccdd29-9000-49c1-a24c-402ed295541c",
+            "type": "arrow",
+            "x": 0,
+            "y": 10,
+            "width": 2,
+            "height": 2,
+            "text": "",
+            "boundElements": [],
+            "points": [[
+            0,
+            0
+        ],[
+            -50,
+            0
+        ],[
+            -50,
+            50
+        ],[
+            0,
+            50
+        ]],
+            "startBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "endBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "fontFamily": 3,
+            "fontSize": 20
+        },{
+            "id": "18b594fd-05e1-4891-ba2c-10d06a42acc0",
+            "type": "arrow",
+            "x": 0,
+            "y": 210,
+            "width": 2,
+            "height": 2,
+            "text": "",
+            "boundElements": [],
+            "points": [[
+            0,
+            0
+        ],[
+            -50,
+            0
+        ],[
+            -50,
+            50
+        ],[
+            0,
+            50
+        ]],
+            "startBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "endBinding": {
+            "elementId": "",
+            "focus": 0,
+            "gap": 0
+        },
+            "fontFamily": 3,
+            "fontSize": 20
+        }],
+            "appState": {
+            "viewBackgroundColor": "#ffffff"
+        }
+        }

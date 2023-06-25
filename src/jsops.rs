@@ -10,7 +10,7 @@ use swc_ecma_parser::{lexer::Lexer, Parser, StringInput, Syntax};
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct FileNode {
     pub name: String,
-    pub source: String, // TODO C -- get the full path
+    pub source: String,
 }
 
 impl FileNode {
@@ -46,7 +46,7 @@ pub fn parse(file_name: &str) -> swc_ecma_ast::Module {
         .expect("failed to parse module")
 }
 
-pub fn get_dependencies(module: &swc_ecma_ast::Module) -> Vec<FileNode> {
+pub fn get_dependencies(dir: &str, module: &swc_ecma_ast::Module) -> Vec<FileNode> {
     module_path!();
     let mut import_statements = Vec::new();
     let mut dependencies = Vec::new();
@@ -58,13 +58,10 @@ pub fn get_dependencies(module: &swc_ecma_ast::Module) -> Vec<FileNode> {
         }
     });
 
-
-    import_statements.clone().into_iter().for_each(|import| {
-        dbg!(import.src);
-    });
-
-
     import_statements.into_iter().for_each(|import| {
+        let directory_path = Path::new(dir);
+        let import_path_name = &import.clone().src.value.to_string();
+        let import_path = Path::new(import_path_name);
         dependencies.push(FileNode::new(
             import
                 .src
@@ -74,7 +71,12 @@ pub fn get_dependencies(module: &swc_ecma_ast::Module) -> Vec<FileNode> {
                 .last()
                 .unwrap()
                 .to_string(),
-            import.src.value.to_string(),
+            directory_path
+                .join(import_path)
+                .canonicalize()
+                .unwrap()
+                .display()
+                .to_string(),
         ));
     });
 
