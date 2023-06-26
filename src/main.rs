@@ -31,27 +31,32 @@ fn tmp_excalidraw_playground(dependency_map: BTreeMap<String, Vec<FileNode>>) {
         document.add_element(element);
     });
 
+    let mut size_multiplier = 1.0;
     dependency_map.iter().for_each(|(k, v)| {
         let start_point = files_locations.get(k).unwrap();
         dbg!(start_point.x, start_point.y);
         v.iter().for_each(|f| {
             let end_point = files_locations.get(&f.source).unwrap();
-            dbg!(end_point.x, end_point.y);
-            let arrow = build_dependency_arrow(start_point, end_point);
+            let arrow = build_dependency_arrow(start_point, end_point, size_multiplier);
             document.add_element(arrow);
+            size_multiplier += 0.25;
         });
     });
 
     document.save("out.excalidraw");
 }
 
-fn build_dependency_arrow(a: &ExcalidrawPoint, b: &ExcalidrawPoint) -> ExcalidrawElement {
+fn build_dependency_arrow(
+    a: &ExcalidrawPoint,
+    b: &ExcalidrawPoint,
+    size_multiplier: f64,
+) -> ExcalidrawElement {
     if a.y <= b.y {
         ExcalidrawElement::new_arrow(
             vec![
                 ExcalidrawPoint::new(a.x, a.y),
-                ExcalidrawPoint::new(a.x - 50.0, a.y),
-                ExcalidrawPoint::new(b.x - 50.0, b.y),
+                ExcalidrawPoint::new(a.x - 50.0 * size_multiplier, a.y),
+                ExcalidrawPoint::new(b.x - 50.0 * size_multiplier, b.y),
                 ExcalidrawPoint::new(b.x, b.y),
             ],
             a.x,
@@ -61,8 +66,8 @@ fn build_dependency_arrow(a: &ExcalidrawPoint, b: &ExcalidrawPoint) -> Excalidra
         ExcalidrawElement::new_arrow(
             vec![
                 ExcalidrawPoint::new(a.x, a.y),
-                ExcalidrawPoint::new(a.x - 50.0, a.y),
-                ExcalidrawPoint::new(b.x - 50.0, b.y),
+                ExcalidrawPoint::new(a.x - 50.0 * size_multiplier, a.y),
+                ExcalidrawPoint::new(b.x - 50.0 * size_multiplier, b.y),
                 ExcalidrawPoint::new(b.x, b.y),
             ],
             0.0,

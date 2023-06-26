@@ -6,7 +6,7 @@
     {
       "type": "text",
       "version": 2,
-      "versionNonce": 1741363809,
+      "versionNonce": 1429723504,
       "isDeleted": false,
       "id": "/Users/watabo/Projects/excali_ts/samples/bar.js",
       "fillStyle": "hachure",
@@ -25,7 +25,7 @@
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1687798551252,
+      "updated": 1687799212139,
       "link": null,
       "locked": false,
       "fontSize": 20,
@@ -41,7 +41,7 @@
     {
       "type": "text",
       "version": 2,
-      "versionNonce": 567474223,
+      "versionNonce": 501265808,
       "isDeleted": false,
       "id": "/Users/watabo/Projects/excali_ts/samples/baz.js",
       "fillStyle": "hachure",
@@ -60,7 +60,7 @@
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1687798551252,
+      "updated": 1687799212139,
       "link": null,
       "locked": false,
       "fontSize": 20,
@@ -75,8 +75,8 @@
     },
     {
       "type": "text",
-      "version": 2,
-      "versionNonce": 1394288193,
+      "version": 3,
+      "versionNonce": 704546704,
       "isDeleted": false,
       "id": "/Users/watabo/Projects/excali_ts/samples/dir/indir.js",
       "fillStyle": "hachure",
@@ -94,8 +94,13 @@
       "seed": 1,
       "groupIds": [],
       "roundness": null,
-      "boundElements": [],
-      "updated": 1687798551252,
+      "boundElements": [
+        {
+          "id": "58118ee1-2b49-4cc1-8bda-6015516f2601",
+          "type": "arrow"
+        }
+      ],
+      "updated": 1687799222612,
       "link": null,
       "locked": false,
       "fontSize": 20,
@@ -111,7 +116,7 @@
     {
       "type": "text",
       "version": 2,
-      "versionNonce": 1547835983,
+      "versionNonce": 156468112,
       "isDeleted": false,
       "id": "/Users/watabo/Projects/excali_ts/samples/foo.js",
       "fillStyle": "hachure",
@@ -130,7 +135,7 @@
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1687798551253,
+      "updated": 1687799212140,
       "link": null,
       "locked": false,
       "fontSize": 20,
@@ -146,7 +151,7 @@
     {
       "type": "text",
       "version": 2,
-      "versionNonce": 339654177,
+      "versionNonce": 172244336,
       "isDeleted": false,
       "id": "/Users/watabo/Projects/excali_ts/samples/otherdir/otherdir.js",
       "fillStyle": "hachure",
@@ -165,7 +170,7 @@
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1687798551253,
+      "updated": 1687799212140,
       "link": null,
       "locked": false,
       "fontSize": 20,
@@ -180,8 +185,8 @@
     },
     {
       "type": "text",
-      "version": 2,
-      "versionNonce": 1556609135,
+      "version": 3,
+      "versionNonce": 412891536,
       "isDeleted": false,
       "id": "/Users/watabo/Projects/excali_ts/samples/root.js",
       "fillStyle": "hachure",
@@ -199,8 +204,13 @@
       "seed": 1,
       "groupIds": [],
       "roundness": null,
-      "boundElements": [],
-      "updated": 1687798551253,
+      "boundElements": [
+        {
+          "id": "58118ee1-2b49-4cc1-8bda-6015516f2601",
+          "type": "arrow"
+        }
+      ],
+      "updated": 1687799222612,
       "link": null,
       "locked": false,
       "fontSize": 20,
@@ -218,7 +228,7 @@
       "version": 1,
       "versionNonce": 0,
       "isDeleted": false,
-      "id": "8a1da78c-db46-417e-8b84-3a49acad8788",
+      "id": "a327cce3-9298-4609-b3ff-03d7ef7c5949",
       "fillStyle": "hachure",
       "strokeWidth": 1,
       "strokeStyle": "solid",
@@ -235,7 +245,7 @@
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1687798551137,
+      "updated": 1687799212019,
       "link": null,
       "locked": false,
       "startBinding": {
@@ -275,7 +285,7 @@
       "version": 1,
       "versionNonce": 0,
       "isDeleted": false,
-      "id": "7f3dbe0c-0c24-4aea-862a-ccf517669769",
+      "id": "efa76c4c-d47d-485b-bafc-7d5a14d88b34",
       "fillStyle": "hachure",
       "strokeWidth": 1,
       "strokeStyle": "solid",
@@ -292,7 +302,7 @@
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1687798551137,
+      "updated": 1687799212019,
       "link": null,
       "locked": false,
       "startBinding": {
@@ -314,11 +324,11 @@
           0
         ],
         [
-          -50,
+          -62.5,
           0
         ],
         [
-          -50,
+          -62.5,
           100
         ],
         [
@@ -329,10 +339,10 @@
     },
     {
       "type": "arrow",
-      "version": 1,
-      "versionNonce": 0,
+      "version": 2,
+      "versionNonce": 724234640,
       "isDeleted": false,
-      "id": "1a05cf72-3d40-469f-a715-d925a8289250",
+      "id": "c743dd5d-3307-4601-bb6d-235f5099adaa",
       "fillStyle": "hachure",
       "strokeWidth": 1,
       "strokeStyle": "solid",
@@ -343,13 +353,13 @@
       "y": 250,
       "strokeColor": "#000000",
       "backgroundColor": "transparent",
-      "width": 2,
-      "height": 2,
+      "width": 75,
+      "height": 100,
       "seed": 1,
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1687798551137,
+      "updated": 1687799234940,
       "link": null,
       "locked": false,
       "startBinding": {
@@ -371,11 +381,11 @@
           0
         ],
         [
-          -50,
+          -75,
           0
         ],
         [
-          -50,
+          -75,
           -100
         ],
         [
@@ -386,10 +396,10 @@
     },
     {
       "type": "arrow",
-      "version": 1,
-      "versionNonce": 0,
+      "version": 2,
+      "versionNonce": 294511504,
       "isDeleted": false,
-      "id": "a12efdc8-eb7a-4ab7-bcb1-4266d4448e8b",
+      "id": "800f1c6b-6c62-4108-ad25-cae1e6c64d0a",
       "fillStyle": "hachure",
       "strokeWidth": 1,
       "strokeStyle": "solid",
@@ -400,13 +410,13 @@
       "y": 250,
       "strokeColor": "#000000",
       "backgroundColor": "transparent",
-      "width": 2,
-      "height": 2,
+      "width": 87.5,
+      "height": 50,
       "seed": 1,
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1687798551137,
+      "updated": 1687799233823,
       "link": null,
       "locked": false,
       "startBinding": {
@@ -428,11 +438,11 @@
           0
         ],
         [
-          -50,
+          -87.5,
           0
         ],
         [
-          -50,
+          -87.5,
           -50
         ],
         [
@@ -443,38 +453,38 @@
     },
     {
       "type": "arrow",
-      "version": 1,
-      "versionNonce": 0,
+      "version": 152,
+      "versionNonce": 2039080816,
       "isDeleted": false,
-      "id": "25367323-01a5-49e7-91fa-d777a7904e09",
+      "id": "58118ee1-2b49-4cc1-8bda-6015516f2601",
       "fillStyle": "hachure",
       "strokeWidth": 1,
       "strokeStyle": "solid",
       "roughness": 1,
       "opacity": 100,
       "angle": 0,
-      "x": 0,
-      "y": 250,
+      "x": -0.08984375,
+      "y": 250.35546875,
       "strokeColor": "#000000",
       "backgroundColor": "transparent",
-      "width": 2,
-      "height": 2,
+      "width": 100,
+      "height": 150,
       "seed": 1,
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1687798551137,
+      "updated": 1687799222612,
       "link": null,
       "locked": false,
       "startBinding": {
-        "elementId": "",
-        "focus": 0,
-        "gap": 0
+        "elementId": "/Users/watabo/Projects/excali_ts/samples/root.js",
+        "focus": 0.2890625,
+        "gap": 1
       },
       "endBinding": {
-        "elementId": "",
-        "focus": 0,
-        "gap": 0
+        "elementId": "/Users/watabo/Projects/excali_ts/samples/dir/indir.js",
+        "focus": 0.2890625,
+        "gap": 1
       },
       "lastCommittedPoint": null,
       "startArrowhead": null,
@@ -485,11 +495,11 @@
           0
         ],
         [
-          -50,
+          -100,
           0
         ],
         [
-          -50,
+          -100,
           -150
         ],
         [
