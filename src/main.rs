@@ -15,93 +15,60 @@ fn main() {
 
     tmp_excalidraw_playground(dependency_map);
 }
-#[derive(Debug)]
-struct Point {
-    x: f64,
-    y: f64,
-}
-
-impl Point {
-    pub fn new(x: f64, y: f64) -> Self {
-        Self { x, y }
-    }
-}
 
 fn tmp_excalidraw_playground(dependency_map: BTreeMap<String, Vec<FileNode>>) {
-    // A new hope
-    // First, simply draw all files and remember where they've been drawn filename -> (x, y)
-    // Second, make another pass through the map. draw a line from each to the (x, y) coordinate
-    // from the document map in the first step
-    // Done.
-
     let mut document = ExcalidrawDocument::new();
     let mut y_value = 0.0;
     let y_increment = 50.0;
 
-    let mut files_locations: BTreeMap<String, Point> = BTreeMap::new();
+    let mut files_locations: BTreeMap<String, ExcalidrawPoint> = BTreeMap::new();
 
     dependency_map.iter().for_each(|(k, _)| {
-        let p = Point::new(0.0, y_value);
-        files_locations.insert(k.to_string(), p);
+        let point = ExcalidrawPoint::new(0.0, y_value);
+        files_locations.insert(k.to_string(), point);
         let element = ExcalidrawElement::new_text(k, 0.0, y_value, k);
         y_value += y_increment;
         document.add_element(element);
     });
 
-    dbg!(files_locations);
-
-    document.save("out.excalidraw");
-
-    /* Old stuff
-    let mut document = ExcalidrawDocument::new();
-
-    let mut y_value = 0.0;
-    let y_increment = 50.0;
-
-    // let arrow_x_offset = -10.0;
-    let arrow_y_offset = 10.0;
-
-    dependency_map.iter().for_each(|(k, _)| {
-        let element = ExcalidrawElement::new_text(k, 0.0, y_value, k);
-        y_value += y_increment;
-        document.add_element(element);
-    });
-
-    // add arrow from file to dependency
-    y_value = -0.0;
-
-    dependency_map.iter().for_each(|(_k, v)| {
-        // let mut x_value = 0.0;
-        // let x_increment = 50.0;
-
-        v.iter().for_each(|_d| {
-            let arrow = build_dependency_arrow(
-                0.0, // x_value + arrow_x_offset,
-                y_value + arrow_y_offset,
-                50.0,
-            );
+    dependency_map.iter().for_each(|(k, v)| {
+        let start_point = files_locations.get(k).unwrap();
+        dbg!(start_point.x, start_point.y);
+        v.iter().for_each(|f| {
+            let end_point = files_locations.get(&f.source).unwrap();
+            dbg!(end_point.x, end_point.y);
+            let arrow = build_dependency_arrow(start_point, end_point);
             document.add_element(arrow);
-            // x_value += x_increment;
         });
-
-        y_value += y_increment;
     });
 
     document.save("out.excalidraw");
-    */
 }
 
-fn build_dependency_arrow(x: f64, y: f64, length: f64) -> ExcalidrawElement {
-    ExcalidrawElement::new_arrow(
-        vec![
-            ExcalidrawPoint::new(0.0, 0.0),
-            ExcalidrawPoint::new(-50.0, 0.0),
-            ExcalidrawPoint::new(-50.0, length),
-            ExcalidrawPoint::new(0.0, length),
-        ],
-        x,
-        y,
-    )
+fn build_dependency_arrow(a: &ExcalidrawPoint, b: &ExcalidrawPoint) -> ExcalidrawElement {
+    if a.y <= b.y {
+        ExcalidrawElement::new_arrow(
+            vec![
+                ExcalidrawPoint::new(a.x, a.y),
+                ExcalidrawPoint::new(a.x - 50.0, a.y),
+                ExcalidrawPoint::new(b.x - 50.0, b.y),
+                ExcalidrawPoint::new(b.x, b.y),
+            ],
+            a.x,
+            a.y,
+        )
+    } else {
+        ExcalidrawElement::new_arrow(
+            vec![
+                ExcalidrawPoint::new(a.x, a.y),
+                ExcalidrawPoint::new(a.x - 50.0, a.y),
+                ExcalidrawPoint::new(b.x - 50.0, b.y),
+                ExcalidrawPoint::new(b.x, b.y),
+            ],
+            0.0,
+            0.0,
+        )
+    }
 }
 
 fn build_dependency_map(dir: &str, files: Vec<String>) -> BTreeMap<String, Vec<FileNode>> {

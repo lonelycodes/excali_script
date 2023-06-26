@@ -1,119 +1,507 @@
 {
-            "type": "excalidraw",
-            "version": "2.0.0",
-            "source": "https://excalidraw.com",
-            "elements": [{
-            "id": "/Users/watabo/Projects/excali_ts/samples/bar.js",
-            "type": "text",
-            "x": 0,
-            "y": 0,
-            "width": 1,
-            "height": 1,
-            "text": "/Users/watabo/Projects/excali_ts/samples/bar.js",
-            "boundElements": [],
-            "points": [],
-            "startBinding": {
-            "elementId": "",
-            "focus": 0,
-            "gap": 0
-        },
-            "endBinding": {
-            "elementId": "",
-            "focus": 0,
-            "gap": 0
-        },
-            "fontFamily": 3,
-            "fontSize": 20
-        },{
-            "id": "/Users/watabo/Projects/excali_ts/samples/baz.js",
-            "type": "text",
-            "x": 0,
-            "y": 50,
-            "width": 1,
-            "height": 1,
-            "text": "/Users/watabo/Projects/excali_ts/samples/baz.js",
-            "boundElements": [],
-            "points": [],
-            "startBinding": {
-            "elementId": "",
-            "focus": 0,
-            "gap": 0
-        },
-            "endBinding": {
-            "elementId": "",
-            "focus": 0,
-            "gap": 0
-        },
-            "fontFamily": 3,
-            "fontSize": 20
-        },{
-            "id": "/Users/watabo/Projects/excali_ts/samples/dir/indir.js",
-            "type": "text",
-            "x": 0,
-            "y": 100,
-            "width": 1,
-            "height": 1,
-            "text": "/Users/watabo/Projects/excali_ts/samples/dir/indir.js",
-            "boundElements": [],
-            "points": [],
-            "startBinding": {
-            "elementId": "",
-            "focus": 0,
-            "gap": 0
-        },
-            "endBinding": {
-            "elementId": "",
-            "focus": 0,
-            "gap": 0
-        },
-            "fontFamily": 3,
-            "fontSize": 20
-        },{
-            "id": "/Users/watabo/Projects/excali_ts/samples/foo.js",
-            "type": "text",
-            "x": 0,
-            "y": 150,
-            "width": 1,
-            "height": 1,
-            "text": "/Users/watabo/Projects/excali_ts/samples/foo.js",
-            "boundElements": [],
-            "points": [],
-            "startBinding": {
-            "elementId": "",
-            "focus": 0,
-            "gap": 0
-        },
-            "endBinding": {
-            "elementId": "",
-            "focus": 0,
-            "gap": 0
-        },
-            "fontFamily": 3,
-            "fontSize": 20
-        },{
-            "id": "/Users/watabo/Projects/excali_ts/samples/root.js",
-            "type": "text",
-            "x": 0,
-            "y": 200,
-            "width": 1,
-            "height": 1,
-            "text": "/Users/watabo/Projects/excali_ts/samples/root.js",
-            "boundElements": [],
-            "points": [],
-            "startBinding": {
-            "elementId": "",
-            "focus": 0,
-            "gap": 0
-        },
-            "endBinding": {
-            "elementId": "",
-            "focus": 0,
-            "gap": 0
-        },
-            "fontFamily": 3,
-            "fontSize": 20
-        }],
-            "appState": {
-            "viewBackgroundColor": "#ffffff"
-        }
-        }
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "type": "text",
+      "version": 2,
+      "versionNonce": 1741363809,
+      "isDeleted": false,
+      "id": "/Users/watabo/Projects/excali_ts/samples/bar.js",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 0,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 550.78125,
+      "height": 1,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551252,
+      "link": null,
+      "locked": false,
+      "fontSize": 20,
+      "fontFamily": 3,
+      "text": "/Users/watabo/Projects/excali_ts/samples/bar.js",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "/Users/watabo/Projects/excali_ts/samples/bar.js",
+      "lineHeight": 0.05,
+      "baseline": 7
+    },
+    {
+      "type": "text",
+      "version": 2,
+      "versionNonce": 567474223,
+      "isDeleted": false,
+      "id": "/Users/watabo/Projects/excali_ts/samples/baz.js",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 50,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 550.78125,
+      "height": 1,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551252,
+      "link": null,
+      "locked": false,
+      "fontSize": 20,
+      "fontFamily": 3,
+      "text": "/Users/watabo/Projects/excali_ts/samples/baz.js",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "/Users/watabo/Projects/excali_ts/samples/baz.js",
+      "lineHeight": 0.05,
+      "baseline": 7
+    },
+    {
+      "type": "text",
+      "version": 2,
+      "versionNonce": 1394288193,
+      "isDeleted": false,
+      "id": "/Users/watabo/Projects/excali_ts/samples/dir/indir.js",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 100,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 621.09375,
+      "height": 1,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551252,
+      "link": null,
+      "locked": false,
+      "fontSize": 20,
+      "fontFamily": 3,
+      "text": "/Users/watabo/Projects/excali_ts/samples/dir/indir.js",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "/Users/watabo/Projects/excali_ts/samples/dir/indir.js",
+      "lineHeight": 0.05,
+      "baseline": 7
+    },
+    {
+      "type": "text",
+      "version": 2,
+      "versionNonce": 1547835983,
+      "isDeleted": false,
+      "id": "/Users/watabo/Projects/excali_ts/samples/foo.js",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 150,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 550.78125,
+      "height": 1,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551253,
+      "link": null,
+      "locked": false,
+      "fontSize": 20,
+      "fontFamily": 3,
+      "text": "/Users/watabo/Projects/excali_ts/samples/foo.js",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "/Users/watabo/Projects/excali_ts/samples/foo.js",
+      "lineHeight": 0.05,
+      "baseline": 7
+    },
+    {
+      "type": "text",
+      "version": 2,
+      "versionNonce": 339654177,
+      "isDeleted": false,
+      "id": "/Users/watabo/Projects/excali_ts/samples/otherdir/otherdir.js",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 200,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 714.84375,
+      "height": 1,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551253,
+      "link": null,
+      "locked": false,
+      "fontSize": 20,
+      "fontFamily": 3,
+      "text": "/Users/watabo/Projects/excali_ts/samples/otherdir/otherdir.js",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "/Users/watabo/Projects/excali_ts/samples/otherdir/otherdir.js",
+      "lineHeight": 0.05,
+      "baseline": 7
+    },
+    {
+      "type": "text",
+      "version": 2,
+      "versionNonce": 1556609135,
+      "isDeleted": false,
+      "id": "/Users/watabo/Projects/excali_ts/samples/root.js",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 250,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 562.5,
+      "height": 1,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551253,
+      "link": null,
+      "locked": false,
+      "fontSize": 20,
+      "fontFamily": 3,
+      "text": "/Users/watabo/Projects/excali_ts/samples/root.js",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "/Users/watabo/Projects/excali_ts/samples/root.js",
+      "lineHeight": 0.05,
+      "baseline": 7
+    },
+    {
+      "type": "arrow",
+      "version": 1,
+      "versionNonce": 0,
+      "isDeleted": false,
+      "id": "8a1da78c-db46-417e-8b84-3a49acad8788",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 0,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 2,
+      "height": 2,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551137,
+      "link": null,
+      "locked": false,
+      "startBinding": {
+        "elementId": "",
+        "focus": 0,
+        "gap": 0
+      },
+      "endBinding": {
+        "elementId": "",
+        "focus": 0,
+        "gap": 0
+      },
+      "lastCommittedPoint": null,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -50,
+          0
+        ],
+        [
+          -50,
+          50
+        ],
+        [
+          0,
+          50
+        ]
+      ]
+    },
+    {
+      "type": "arrow",
+      "version": 1,
+      "versionNonce": 0,
+      "isDeleted": false,
+      "id": "7f3dbe0c-0c24-4aea-862a-ccf517669769",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 0,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 2,
+      "height": 2,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551137,
+      "link": null,
+      "locked": false,
+      "startBinding": {
+        "elementId": "",
+        "focus": 0,
+        "gap": 0
+      },
+      "endBinding": {
+        "elementId": "",
+        "focus": 0,
+        "gap": 0
+      },
+      "lastCommittedPoint": null,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -50,
+          0
+        ],
+        [
+          -50,
+          100
+        ],
+        [
+          0,
+          100
+        ]
+      ]
+    },
+    {
+      "type": "arrow",
+      "version": 1,
+      "versionNonce": 0,
+      "isDeleted": false,
+      "id": "1a05cf72-3d40-469f-a715-d925a8289250",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 250,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 2,
+      "height": 2,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551137,
+      "link": null,
+      "locked": false,
+      "startBinding": {
+        "elementId": "",
+        "focus": 0,
+        "gap": 0
+      },
+      "endBinding": {
+        "elementId": "",
+        "focus": 0,
+        "gap": 0
+      },
+      "lastCommittedPoint": null,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -50,
+          0
+        ],
+        [
+          -50,
+          -100
+        ],
+        [
+          0,
+          -100
+        ]
+      ]
+    },
+    {
+      "type": "arrow",
+      "version": 1,
+      "versionNonce": 0,
+      "isDeleted": false,
+      "id": "a12efdc8-eb7a-4ab7-bcb1-4266d4448e8b",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 250,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 2,
+      "height": 2,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551137,
+      "link": null,
+      "locked": false,
+      "startBinding": {
+        "elementId": "",
+        "focus": 0,
+        "gap": 0
+      },
+      "endBinding": {
+        "elementId": "",
+        "focus": 0,
+        "gap": 0
+      },
+      "lastCommittedPoint": null,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -50,
+          0
+        ],
+        [
+          -50,
+          -50
+        ],
+        [
+          0,
+          -50
+        ]
+      ]
+    },
+    {
+      "type": "arrow",
+      "version": 1,
+      "versionNonce": 0,
+      "isDeleted": false,
+      "id": "25367323-01a5-49e7-91fa-d777a7904e09",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 0,
+      "y": 250,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "width": 2,
+      "height": 2,
+      "seed": 1,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1687798551137,
+      "link": null,
+      "locked": false,
+      "startBinding": {
+        "elementId": "",
+        "focus": 0,
+        "gap": 0
+      },
+      "endBinding": {
+        "elementId": "",
+        "focus": 0,
+        "gap": 0
+      },
+      "lastCommittedPoint": null,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -50,
+          0
+        ],
+        [
+          -50,
+          -150
+        ],
+        [
+          0,
+          -150
+        ]
+      ]
+    }
+  ],
+  "appState": {
+    "gridSize": null,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}
