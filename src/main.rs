@@ -4,6 +4,7 @@ mod jsops;
 use core::panic;
 use excalidraw::{ExcalidrawDocument, ExcalidrawElement, ExcalidrawPoint};
 use jsops::FileNode;
+use rand::Rng;
 use std::{collections::BTreeMap, path::Path};
 use walkdir::WalkDir;
 
@@ -45,9 +46,10 @@ fn tmp_excalidraw_playground(dependency_map: BTreeMap<String, Vec<FileNode>>) {
     let mut size_multiplier = 1.0;
     dependency_map.iter().for_each(|(k, v)| {
         let start_point = files_locations.get(k).unwrap();
+        let color = get_random_hex_color();
         v.iter().for_each(|f| {
             let end_point = files_locations.get(&f.source).unwrap();
-            let arrow = build_dependency_arrow(start_point, end_point, size_multiplier);
+            let arrow = build_dependency_arrow(start_point, end_point, size_multiplier, color.to_string());
             document.add_element(arrow);
             size_multiplier += 0.25;
         });
@@ -56,10 +58,16 @@ fn tmp_excalidraw_playground(dependency_map: BTreeMap<String, Vec<FileNode>>) {
     document.save("out.excalidraw");
 }
 
+fn get_random_hex_color() -> String {
+    let mut rng = rand::thread_rng();
+    format!("#{:06x}", rng.gen::<u32>())
+}
+
 fn build_dependency_arrow(
     a: &ExcalidrawPoint,
     b: &ExcalidrawPoint,
     size_multiplier: f64,
+    color: String,
 ) -> ExcalidrawElement {
     if a.y <= b.y {
         ExcalidrawElement::new_arrow(
@@ -71,6 +79,7 @@ fn build_dependency_arrow(
             ],
             a.x,
             a.y,
+            color,
         )
     } else {
         ExcalidrawElement::new_arrow(
@@ -82,6 +91,7 @@ fn build_dependency_arrow(
             ],
             0.0,
             0.0,
+            color,
         )
     }
 }

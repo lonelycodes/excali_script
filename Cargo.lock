@@ -107,6 +107,7 @@ name = "excali_ts"
 version = "0.1.0"
 dependencies = [
  "glob",
+ "rand",
  "swc_common",
  "swc_ecma_ast",
  "swc_ecma_parser",

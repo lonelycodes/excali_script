@@ -90,6 +90,7 @@ pub struct ExcalidrawElement {
     pub points: Vec<ExcalidrawPoint>,
     pub start_binding: ExcalidrawBinding,
     pub end_binding: ExcalidrawBinding,
+    pub stroke_color: String,
 }
 impl ExcalidrawElement {
     pub fn new_text(text: &str, x: f64, y: f64, id: &str) -> Self {
@@ -105,6 +106,7 @@ impl ExcalidrawElement {
             points: Vec::new(),
             start_binding: ExcalidrawBinding::new(),
             end_binding: ExcalidrawBinding::new(),
+            stroke_color: "#000000".to_string(),
         }
     }
 
@@ -112,6 +114,7 @@ impl ExcalidrawElement {
         points: Vec<ExcalidrawPoint>,
         x: f64,
         y: f64,
+        color: String,
         // start_element: ExcalidrawBoundElement,
         // end_element: ExcalidrawBoundElement,
     ) -> Self {
@@ -127,6 +130,7 @@ impl ExcalidrawElement {
             points,
             start_binding: ExcalidrawBinding::new(),
             end_binding: ExcalidrawBinding::new(),
+            stroke_color: color,
         }
     }
 
@@ -140,6 +144,7 @@ impl ExcalidrawElement {
             "width": {},
             "height": {},
             "text": "{}",
+            "strokeColor": "{}",
             "boundElements": [{}],
             "points": [{}],
             "startBinding": {},
@@ -154,6 +159,7 @@ impl ExcalidrawElement {
             self.width,
             self.height,
             self.text,
+            self.stroke_color,
             self.bound_elements
                 .iter()
                 .map(|e| e.to_json())
@@ -198,14 +204,6 @@ pub struct ExcalidrawBoundElement {
 }
 
 impl ExcalidrawBoundElement {
-    // TODO - uncomment when we need to create a new bound element
-    // pub fn new() -> Self {
-    //     Self {
-    //         id: "".to_string(),
-    //         r#type: "".to_string(),
-    //     }
-    // }
-
     pub fn to_json(&self) -> String {
         format!(
             r#"{{
