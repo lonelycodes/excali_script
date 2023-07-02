@@ -170,7 +170,7 @@ impl ExcalidrawElement {
     }
 }
 
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Clone)]
 pub struct ExcalidrawPoint {
     pub x: f64,
     pub y: f64,

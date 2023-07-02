@@ -27,14 +27,24 @@ fn tmp_excalidraw_playground(dependency_map: BTreeMap<String, Vec<FileNode>>) {
         let point = ExcalidrawPoint::new(0.0, y_value);
         files_locations.insert(k.to_string(), point);
         let element = ExcalidrawElement::new_text(k, 0.0, y_value, k);
-        y_value += y_increment;
         document.add_element(element);
+        y_value += y_increment;
+    });
+    dependency_map.iter().for_each(|(_, v)| {
+        v.iter().for_each(|f| {
+            if files_locations.get(&f.source).is_none() {
+                let point = ExcalidrawPoint::new(0.0, y_value);
+                files_locations.insert(f.source.to_string(), point);
+                let element = ExcalidrawElement::new_text(&f.source, 0.0, y_value, &f.source);
+                document.add_element(element);
+                y_value += y_increment;
+            };
+        })
     });
 
     let mut size_multiplier = 1.0;
     dependency_map.iter().for_each(|(k, v)| {
         let start_point = files_locations.get(k).unwrap();
-        dbg!(start_point.x, start_point.y);
         v.iter().for_each(|f| {
             let end_point = files_locations.get(&f.source).unwrap();
             let arrow = build_dependency_arrow(start_point, end_point, size_multiplier);
